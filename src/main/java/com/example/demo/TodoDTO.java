@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +11,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class TodoDTO {
+
+    @JsonProperty("id")
     private Long id;
+    @JsonProperty("title")
     private String title;
+    @JsonProperty("completed")
     private boolean completed;
 }

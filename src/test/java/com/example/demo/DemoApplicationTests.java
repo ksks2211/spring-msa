@@ -25,8 +25,6 @@ class DemoApplicationTests {
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
-        TodoListResponse body = response.getBody();
-        List<TodoDTO> todos = body.getTodos();
         assertNotNull(response.getBody());
         assertNotNull(response.getBody().getTodos());
     }
