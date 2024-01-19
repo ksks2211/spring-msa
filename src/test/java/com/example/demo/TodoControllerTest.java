@@ -29,14 +29,6 @@ class TodoControllerTest {
     @MockBean
     private TodoService todoService;
 
-    private Todo todo;
-
-    @BeforeEach
-    public void setup(){
-        this.todo = Todo.builder().title("Test Todo").build();
-    }
-
-
     @Test
     public void testGetAllTodos() throws Exception {
 
@@ -46,8 +38,8 @@ class TodoControllerTest {
         el1.setId(1L);
         el1.setCompleted(false);
 
-        el2.setTitle("Sample 1");
-        el2.setId(1L);
+        el2.setTitle("Sample 2");
+        el2.setId(2L);
         el2.setCompleted(false);
         List<TodoDTO> todos = List.of(el1,el2);
 
@@ -60,7 +52,7 @@ class TodoControllerTest {
 
 
         mockMvc.perform(
-            get("/v1").contentType(MediaType.APPLICATION_JSON))
+            get("/todos").contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.todos").isArray())
             .andExpect(jsonPath("$.todos.size()").value(2));
