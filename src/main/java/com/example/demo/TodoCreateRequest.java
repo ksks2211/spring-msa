@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
  * @since 2024-01-10
  */
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class TodoCreateRequest {
     private String title;
 }
