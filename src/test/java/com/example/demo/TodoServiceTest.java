@@ -30,8 +30,7 @@ class TodoServiceTest {
     public void testSave(){
         // Given
         String title = "Sleep early";
-        TodoCreateRequest form = new TodoCreateRequest();
-        form.setTitle(title);
+        TodoCreateRequest form = new TodoCreateRequest(title);
         Todo savedTodo = new Todo(1L,title, false);
         when(todoRepository.save(any(Todo.class))).thenReturn(savedTodo);
 

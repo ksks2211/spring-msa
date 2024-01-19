@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2024-01-10
  */
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/posts")
 @RequiredArgsConstructor
 public class TodoController {
 

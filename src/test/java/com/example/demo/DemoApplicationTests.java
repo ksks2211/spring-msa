@@ -19,11 +19,22 @@ class DemoApplicationTests {
     @Test
     void testGetTodos() {
         // Map<String, List<TodoDTO>>
-        ResponseEntity<TodoListResponse> response = restTemplate.getForEntity("/v1", TodoListResponse.class);
+        ResponseEntity<TodoListResponse> response = restTemplate.getForEntity("/posts", TodoListResponse.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
         assertNotNull(response.getBody().getTodos());
+    }
+
+    @Test
+    void testCreateTodo(){
+        var title = "Hello World";
+        TodoCreateRequest todoCreateRequest = new TodoCreateRequest(title);
+
+        ResponseEntity<Long> response = restTemplate.postForEntity("/posts", todoCreateRequest, Long.class);
+
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertNotNull(response.getBody());
     }
 
 }

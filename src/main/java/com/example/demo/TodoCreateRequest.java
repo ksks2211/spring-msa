@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -7,6 +8,7 @@ import lombok.Data;
  * @since 2024-01-10
  */
 @Data
+@AllArgsConstructor
 public class TodoCreateRequest {
     private String title;
 }
