@@ -7,6 +7,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -22,6 +24,9 @@ class DemoApplicationTests {
         ResponseEntity<TodoListResponse> response = restTemplate.getForEntity("/todos", TodoListResponse.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
+
+        TodoListResponse body = response.getBody();
+        List<TodoDTO> todos = body.getTodos();
         assertNotNull(response.getBody());
         assertNotNull(response.getBody().getTodos());
     }
