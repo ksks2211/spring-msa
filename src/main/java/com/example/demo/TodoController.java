@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2024-01-10
  */
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/todos")
 @RequiredArgsConstructor
 public class TodoController {
 
@@ -22,7 +22,7 @@ public class TodoController {
     }
 
 
-    @PostMapping
+    @PostMapping("")
     public ResponseEntity<?> addTodo(@RequestBody TodoCreateRequest todoCreateForm){
 
         Long id = todoService.saveTodo(todoCreateForm);
