@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+subprojects{
+    group = 'com.github.ksks2211'
+    version = '0.0.1'
+
+    repositories {
+        mavenCentral()
+    }
+
+
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java'
+
+
+
+
+    dependencies {
+//        developmentOnly 'org.springframework.boot:spring-boot-devtools'
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+
+    test {
+        useJUnitPlatform()
+    }
+
+    if (project.path.startsWith(":app") || project.path.startsWith(":manage")) {
+        bootJar.enabled(true)
+        jar.enabled(false)
+
+        ext {
+            set('springBootAdminVersion', "3.2.1")
+        }
+
+        dependencyManagement {
+            imports {
+                mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
+            }
+        }
+
+    } else if (project.path.startsWith(":util")) {
+        bootJar.enabled(false)
+        jar.enabled(true)
+    }
+}
+
+

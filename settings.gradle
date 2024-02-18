@@ -1,0 +1,20 @@
+rootProject.name = 'spring-microservices'
+
+
+file('app').listFiles().each { appDir ->
+    if (appDir.isDirectory()) {
+        include "app:${appDir.name}"
+    }
+}
+
+file('manage').listFiles().each { utilDir ->
+    if (utilDir.isDirectory()) {
+        include "manage:${utilDir.name}"
+    }
+}
+
+file('util').listFiles().each { utilDir ->
+    if (utilDir.isDirectory()) {
+        include "util:${utilDir.name}"
+    }
+}
