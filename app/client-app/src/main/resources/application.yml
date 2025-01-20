@@ -1,0 +1,23 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: client-app
+  boot:
+    admin:
+      client:
+        url: ${ADMIN_CLIENT_URL:http://localhost:8080}
+        instance:
+          name: ${spring.application.name}
+
+
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

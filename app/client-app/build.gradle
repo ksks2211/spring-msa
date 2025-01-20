@@ -1,0 +1,4 @@
+dependencies {
+    implementation 'de.codecentric:spring-boot-admin-client:3.4.1'
+
+}

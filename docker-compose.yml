@@ -1,0 +1,19 @@
+services:
+  spring-admin:
+    image: spring-admin
+    networks:
+      - springboot-network
+    ports:
+      - 8080:8080
+
+  spring-client:
+    image: spring-client
+    networks:
+      - springboot-network
+    environment:
+      ADMIN_CLIENT_URL: http://spring-admin:8080
+    deploy:
+      replicas: 2
+networks:
+  springboot-network:
+    driver: bridge
